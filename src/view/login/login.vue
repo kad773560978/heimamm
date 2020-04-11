@@ -43,9 +43,9 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" class="btn_primary">登录</el-button>
+            <el-button type="primary" class="btn_primary" @click="alertaa">登录</el-button>
             <br />
-            <el-button type="primary" class="btn_primary">注册</el-button>
+            <el-button type="primary" class="btn_primary" @click="registerShow">注册</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -53,11 +53,19 @@
     <div class="right">
       <img src="@/assets/img/login_banner_ele.png" alt />
     </div>
+
+
+
+    <register ref="regShow"></register>
   </div>
 </template>
 
 <script>
+import register from '@/view/login/register.vue'
 export default {
+  components:{
+    register
+  },
   data() {
     return {
       form: {
@@ -80,7 +88,16 @@ export default {
         ]
       }
     };
-  }
+  },
+  methods: {
+    registerShow(){
+        this.$refs.regShow.outerVisible = !this.$refs.regShow.outerVisible
+    },
+
+    alertaa(){
+      alert(process.env.VUE_APP_produ)
+    }
+  },
 };
 </script>
 
